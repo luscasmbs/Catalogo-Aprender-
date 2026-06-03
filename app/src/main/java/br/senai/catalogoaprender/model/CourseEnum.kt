@@ -1,6 +1,7 @@
 package br.senai.catalogoaprender.model
 
 enum class Level {
+    VAZIO,
     BASICO,
     INTERMEDIARIO,
     AVANCACO
@@ -8,6 +9,8 @@ enum class Level {
 enum class Availability {
     DISPONIVEL,
     EM_BREVE,
+    VAZIO,
+
     INDISPONIVEL
 }
 
@@ -17,5 +20,7 @@ enum class Category {
     DESIGN,
     QUALIDADE,
     GESTAO,
+    VAZIO,
+
     DADOS
 }

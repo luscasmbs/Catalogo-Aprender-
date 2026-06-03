@@ -19,7 +19,24 @@ data class DataCourse(
     val longdescription: String,
     val availability: Availability,
     val percentageprogress: Double
-)
+){
+    companion object{
+        fun examplemodel(): DataCourse{
+            return DataCourse(
+                id = 1,
+                completename = "Curso Técnico em Análise e Desenvolvimento de Sistemas",
+                shortname = "ADS",
+                type = Category.PROGRAMACAO,
+                level = Level.INTERMEDIARIO,
+                worktime = 1300,
+                shortdescription = "Formação técnica para criar apps e sites.",
+                longdescription = "colocar dps",
+                availability = Availability.DISPONIVEL,
+                percentageprogress = 0.90
+            )
+        }
+    }
+}
 
 @Composable
 fun RegisterCourse() {
@@ -37,4 +54,5 @@ fun RegisterCourse() {
             percentageprogress = 0.20
         )
     )
+
 }
