@@ -47,7 +47,7 @@
                 },
                 colors = OutlinedTextFieldDefaults.colors(
                     unfocusedBorderColor = Color(0xFF1e3352),
-                    focusedBorderColor = Color(0xFF1e3352),
+                    focusedBorderColor = Color(0xFFe27d5d),
                     unfocusedContainerColor = Color(0xFF1e3352),
                     focusedContainerColor = Color(0xFF1e3352),
                     focusedTextColor = Color(0xFF4a7fa5),
