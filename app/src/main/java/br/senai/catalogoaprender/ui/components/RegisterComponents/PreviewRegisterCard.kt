@@ -78,7 +78,6 @@ fun CoursePreviewCard(
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            // Linha 1: Categoria + Nível
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -89,7 +88,6 @@ fun CoursePreviewCard(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Linha 2: Carga Horária + Disponibilidade + Progresso
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)

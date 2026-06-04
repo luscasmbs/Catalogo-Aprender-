@@ -42,6 +42,7 @@ fun CourseTextField(
     onavailability: (String) -> Unit,
     onpercentageprogress: (Double) -> Unit,
     modifier: Modifier = Modifier
+
 ) {
     Column(
         modifier = modifier

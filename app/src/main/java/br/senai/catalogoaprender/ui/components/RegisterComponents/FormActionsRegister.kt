@@ -53,7 +53,7 @@ fun FormActions(
                     contentColor = Color.White
                 )
             ) {
-                Text(text = "Validar cadastro")
+                Text(text = "Cadastrar")
             }
         }
 

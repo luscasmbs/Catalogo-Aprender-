@@ -1,7 +1,6 @@
 package br.senai.catalogoaprender.ui.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,13 +29,13 @@ fun SearchHeader(modifier: Modifier = Modifier){
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(180.dp)
+                .height(174.dp)
                 .background(Color(0xFF0d1b2a))
         ) {
             Row(
                 modifier = Modifier
                     .padding(12.dp)
-                    .padding(top = 37.dp),
+                    .padding(top = 20.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
@@ -59,7 +58,7 @@ fun SearchHeader(modifier: Modifier = Modifier){
             Text(
                 text = "Catálogo Aprender+",
                 modifier = Modifier
-                    .padding(top = 98.dp)
+                    .padding(top = 84.dp)
                     .padding(start = 12.dp),
                 color = Color(0xFFF4F5F0),
                 style = MaterialTheme.typography.labelSmall,
@@ -69,7 +68,7 @@ fun SearchHeader(modifier: Modifier = Modifier){
             Text(
                 text = "Explore cursos técnicos e profissionalizantes.",
                 modifier = Modifier
-                    .padding(top = 133.dp)
+                    .padding(top = 119.dp)
                     .padding(start = 12.dp),
                 color = Color(0xFF5cacd0),
                 style = MaterialTheme.typography.labelSmall,

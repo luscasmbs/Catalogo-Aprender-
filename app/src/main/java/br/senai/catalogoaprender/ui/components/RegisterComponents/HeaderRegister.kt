@@ -2,7 +2,6 @@ package br.senai.catalogoaprender.ui.components.RegisterComponents
 
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,13 +32,13 @@ fun CursoViewHeader(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp)
+                .height(174.dp)
                 .background(Color(0xFF0d1b2a))
         ) {
             Row(
                 modifier = Modifier
                     .padding(12.dp)
-                    .padding(top = 46.dp),
+                    .padding(top = 20.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
@@ -62,7 +61,7 @@ fun CursoViewHeader(
             Text(
                 text = "Cadastro Aprender+",
                 modifier = Modifier
-                    .padding(top = 110.dp)
+                    .padding(top = 84.dp)
                     .padding(start = 12.dp),
                 color = Color(0xFFF4F5F0),
                 style = MaterialTheme.typography.labelSmall,
@@ -72,7 +71,7 @@ fun CursoViewHeader(
             Text(
                 text = "Monte a apresentação inicial de um curso técnico.",
                 modifier = Modifier
-                    .padding(top = 145.dp)
+                    .padding(top = 119.dp)
                     .padding(start = 12.dp),
                 color = Color(0xFF5cacd0),
                 style = MaterialTheme.typography.labelSmall,
