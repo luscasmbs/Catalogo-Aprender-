@@ -3,6 +3,7 @@
     import androidx.compose.foundation.background
     import androidx.compose.foundation.layout.Arrangement
     import androidx.compose.foundation.layout.Column
+    import androidx.compose.foundation.layout.Spacer
     import androidx.compose.foundation.layout.fillMaxWidth
     import androidx.compose.foundation.layout.height
     import androidx.compose.foundation.layout.width
@@ -54,6 +55,7 @@
                     unfocusedTextColor = Color(0xFF4a7fa5)
                 )
             )
+            Spacer(modifier = Modifier.height(20.dp))
         }
 
 

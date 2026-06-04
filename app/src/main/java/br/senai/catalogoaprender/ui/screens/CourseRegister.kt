@@ -35,6 +35,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import br.senai.catalogoaprender.model.Availability
 import br.senai.catalogoaprender.model.Category
 import br.senai.catalogoaprender.model.DataCourse
@@ -63,7 +65,7 @@ private fun emptyCourse() = DataCourse(
 )
 
 @Composable
-fun CadastroCursos(modifier: Modifier = Modifier) {
+fun CadastroCursos(navController: NavController, modifier: Modifier = Modifier) {
     var course by remember { mutableStateOf(emptyCourse()) }
     var statusMessage by remember {
         mutableStateOf("Preencha os dados para gerar a visualização do curso.")
@@ -87,7 +89,7 @@ fun CadastroCursos(modifier: Modifier = Modifier) {
 
                     ) {
                         Button(
-                            onClick = {},
+                            onClick = {navController.navigate("Catalog")},
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color(0xFFffffff)
                             ),
@@ -190,6 +192,5 @@ fun CadastroCursos(modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 private fun ScreenPreview() {
-        CadastroCursos()
-
+    CadastroCursos(navController = rememberNavController())
 }
