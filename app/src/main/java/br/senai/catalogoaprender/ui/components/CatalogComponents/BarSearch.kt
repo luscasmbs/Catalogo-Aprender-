@@ -20,8 +20,12 @@ package br.senai.catalogoaprender.ui.components.CatalogComponents
     import androidx.compose.runtime.getValue
     import androidx.compose.runtime.setValue
     import androidx.compose.ui.Alignment
+    import br.senai.catalogoaprender.ui.theme.Blue10
+    import br.senai.catalogoaprender.ui.theme.Blue30
+    import br.senai.catalogoaprender.ui.theme.LightBlue
+    import br.senai.catalogoaprender.ui.theme.Orange10
 
-    @Composable
+@Composable
     fun BarSearch(
         modifier: Modifier = Modifier,
         onSearchTex: (String) -> Unit = {}
@@ -30,7 +34,7 @@ package br.senai.catalogoaprender.ui.components.CatalogComponents
 
         Column(modifier = Modifier
             .fillMaxWidth()
-            .background(Color(0xFF0d1b2a)),
+            .background(Blue10),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally) {
             OutlinedTextField(
@@ -43,15 +47,15 @@ package br.senai.catalogoaprender.ui.components.CatalogComponents
                 modifier = modifier
                     .fillMaxWidth(0.9f),
                 label ={
-                    Text(text = "Busca", color = Color(0xFF4a7fa5))
+                    Text(text = "Busca", color = LightBlue)
                 },
                 colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedBorderColor = Color(0xFF1e3352),
-                    focusedBorderColor = Color(0xFFe27d5d),
-                    unfocusedContainerColor = Color(0xFF1e3352),
-                    focusedContainerColor = Color(0xFF1e3352),
-                    focusedTextColor = Color(0xFF4a7fa5),
-                    unfocusedTextColor = Color(0xFF4a7fa5)
+                    unfocusedBorderColor = Blue30,
+                    focusedBorderColor = Orange10,
+                    unfocusedContainerColor = Blue30,
+                    focusedContainerColor = Blue30,
+                    focusedTextColor = LightBlue,
+                    unfocusedTextColor = LightBlue
                 )
             )
             Spacer(modifier = Modifier.height(20.dp))

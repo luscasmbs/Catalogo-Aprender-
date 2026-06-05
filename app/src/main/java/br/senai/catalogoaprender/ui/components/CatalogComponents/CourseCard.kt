@@ -19,10 +19,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.senai.catalogoaprender.model.DataCourse
+import br.senai.catalogoaprender.model.DataCourse.Companion.examplemodel
 import br.senai.catalogoaprender.ui.components.RegisterComponents.InfoChip
+import br.senai.catalogoaprender.ui.theme.Gray30
+import kotlinx.coroutines.selects.select
 
 @Composable
 fun CourseCard(
@@ -91,10 +95,20 @@ fun CourseCard(
             Text(
                 text = course.shortdescription,
                 style = MaterialTheme.typography.bodySmall,
-                color = Color(0xFF6A8EA0),
+                color = Gray30,
                 fontStyle = FontStyle.Italic
             )
         }
     }
 }
 
+@Preview
+@Composable
+private fun CourseCardPreview(){
+    CourseCard(
+        course = examplemodel(),
+        select = false,
+        onclick = {}
+
+    )
+}

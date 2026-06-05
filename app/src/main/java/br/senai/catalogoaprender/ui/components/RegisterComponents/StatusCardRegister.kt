@@ -13,6 +13,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.senai.catalogoaprender.ui.theme.CatalogoAprenderTheme
+import br.senai.catalogoaprender.ui.theme.Gray20
+import br.senai.catalogoaprender.ui.theme.Orange20
+import br.senai.catalogoaprender.ui.theme.White
 
 @Composable
 fun StatusCard(
@@ -23,13 +26,13 @@ fun StatusCard(
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFFFFF)),
-        border = BorderStroke(1.5.dp, Color(0xFFF1835E))
+        colors = CardDefaults.cardColors(containerColor = White),
+        border = BorderStroke(1.5.dp, Orange20)
     ) {
         Text(
             text = mensage,
             style = MaterialTheme.typography.bodyMedium,
-            color = Color(0xFF6B635A),
+            color = Gray20,
             modifier = Modifier.padding(14.dp)
         )
     }

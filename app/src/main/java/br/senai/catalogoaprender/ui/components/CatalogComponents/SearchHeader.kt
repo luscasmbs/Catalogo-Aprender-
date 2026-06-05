@@ -22,6 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.senai.catalogoaprender.R.drawable.logo
+import br.senai.catalogoaprender.ui.theme.Blue10
+import br.senai.catalogoaprender.ui.theme.Blue70
+import br.senai.catalogoaprender.ui.theme.White100
 
 @Composable
 fun SearchHeader(modifier: Modifier = Modifier){
@@ -30,7 +33,7 @@ fun SearchHeader(modifier: Modifier = Modifier){
             modifier = Modifier
                 .fillMaxWidth()
                 .height(174.dp)
-                .background(Color(0xFF0d1b2a))
+                .background(Blue10)
         ) {
             Row(
                 modifier = Modifier
@@ -50,7 +53,7 @@ fun SearchHeader(modifier: Modifier = Modifier){
                     text = "APRENDER+",
                     modifier = Modifier.padding(start = 12.dp),
                     style = MaterialTheme.typography.labelSmall,
-                    color = Color(0xFF5cacd0),
+                    color = Blue70,
                     fontSize = 13.sp
                 )
             }
@@ -60,7 +63,7 @@ fun SearchHeader(modifier: Modifier = Modifier){
                 modifier = Modifier
                     .padding(top = 84.dp)
                     .padding(start = 12.dp),
-                color = Color(0xFFF4F5F0),
+                color = White100,
                 style = MaterialTheme.typography.labelSmall,
                 fontSize = 23.sp
             )
@@ -70,7 +73,7 @@ fun SearchHeader(modifier: Modifier = Modifier){
                 modifier = Modifier
                     .padding(top = 119.dp)
                     .padding(start = 12.dp),
-                color = Color(0xFF5cacd0),
+                color = Blue70,
                 style = MaterialTheme.typography.labelSmall,
                 fontSize = 13.sp
             )

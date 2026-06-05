@@ -14,7 +14,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import br.senai.catalogoaprender.ui.theme.Blue30
+import br.senai.catalogoaprender.ui.theme.Blue60
 import br.senai.catalogoaprender.ui.theme.CatalogoAprenderTheme
+import br.senai.catalogoaprender.ui.theme.Green20
+import br.senai.catalogoaprender.ui.theme.Green50
+import br.senai.catalogoaprender.ui.theme.Orange30
+import br.senai.catalogoaprender.ui.theme.White
 
 @Composable
 fun FormActions(
@@ -38,8 +44,8 @@ fun FormActions(
                 modifier = Modifier.weight(1f),
                 shape = RoundedCornerShape(16.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF1E3352),
-                    contentColor = Color(0xFFA8C4D4)
+                    containerColor = Blue30,
+                    contentColor = Blue60
                 )
             ) {
                 Text(text = "Limpar")
@@ -49,8 +55,8 @@ fun FormActions(
                 modifier = Modifier.weight(1f),
                 shape = RoundedCornerShape(16.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFF4845F),
-                    contentColor = Color.White
+                    containerColor = Orange30,
+                    contentColor = White
                 )
             ) {
                 Text(text = "Cadastrar")
@@ -62,8 +68,8 @@ fun FormActions(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(16.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF1D6A5A),
-                contentColor = Color(0xFF7DDFC9)
+                containerColor = Green50,
+                contentColor = Green20
             )
         ) {
             Text(text = "Carregar exemplo")

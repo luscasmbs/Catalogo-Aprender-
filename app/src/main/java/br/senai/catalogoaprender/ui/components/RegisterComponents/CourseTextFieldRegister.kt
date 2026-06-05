@@ -25,6 +25,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.senai.catalogoaprender.model.DataCourse
 import br.senai.catalogoaprender.ui.theme.CatalogoAprenderTheme
+import br.senai.catalogoaprender.ui.theme.Gray40
+import br.senai.catalogoaprender.ui.theme.Gray50
+import br.senai.catalogoaprender.ui.theme.Gray60
+import br.senai.catalogoaprender.ui.theme.White
 
 @Composable
 fun CourseTextField(
@@ -46,14 +50,14 @@ fun CourseTextField(
             .fillMaxWidth()
             .padding(top = 20.dp)
             .padding(horizontal = 16.dp)
-            .background(Color(0xFFFFFFFF), shape = RoundedCornerShape(16.dp))
-            .border(0.5.dp, Color(0xFFE8E4DF), shape = RoundedCornerShape(16.dp))
+            .background(White, shape = RoundedCornerShape(16.dp))
+            .border(0.5.dp, Gray60, shape = RoundedCornerShape(16.dp))
             .padding(horizontal = 12.dp, vertical = 16.dp)
     ) {
         Text(
             text = "DADOS DO CURSO",
             style = MaterialTheme.typography.labelSmall,
-            color = Color(0xFFC5C1BC),
+            color = Gray50,
             fontSize = 13.sp,
             modifier = Modifier.padding(bottom = 12.dp)
         )
@@ -62,7 +66,7 @@ fun CourseTextField(
             shape = RoundedCornerShape(16.dp),
             value = course.completename,
             onValueChange = oncompletename,
-            placeholder = { Text("Nome completo do curso", color = Color(0xFF9E9890)) },
+            placeholder = { Text("Nome completo do curso", color = Gray40) },
             singleLine = true,
             colors = courseTextFieldColors(),
             modifier = Modifier.fillMaxWidth()
@@ -74,7 +78,7 @@ fun CourseTextField(
             shape = RoundedCornerShape(16.dp),
             value = course.shortname,
             onValueChange = onshortname,
-            placeholder = { Text("Nome breve", color = Color(0xFF9E9890)) },
+            placeholder = { Text("Nome breve", color = Gray40) },
             singleLine = true,
             colors = courseTextFieldColors(),
             modifier = Modifier.fillMaxWidth()
@@ -124,7 +128,7 @@ fun CourseTextField(
             shape = RoundedCornerShape(16.dp),
             value = course.shortdescription,
             onValueChange = onshortdescription,
-            placeholder = { Text("Descrição curta (máx. 120 caracteres)", color = Color(0xFF9E9890)) },
+            placeholder = { Text("Descrição curta (máx. 120 caracteres)", color = Gray40) },
             maxLines = 3,
             colors = courseTextFieldColors(),
             modifier = Modifier
@@ -138,7 +142,7 @@ fun CourseTextField(
             shape = RoundedCornerShape(16.dp),
             value = course.longdescription,
             onValueChange = onlongdescription,
-            placeholder = { Text("Descrição longa", color = Color(0xFF9E9890)) },
+            placeholder = { Text("Descrição longa", color = Gray40) },
             maxLines = 5,
             colors = courseTextFieldColors(),
             modifier = Modifier
@@ -152,7 +156,7 @@ fun CourseTextField(
             shape = RoundedCornerShape(16.dp),
             value = course.percentageprogress.toString(),
             onValueChange = { it.toDoubleOrNull()?.let(onpercentageprogress) },
-            placeholder = { Text("Progresso (0.0 a 1.0)", color = Color(0xFF9E9890)) },
+            placeholder = { Text("Progresso (0.0 a 1.0)", color = Gray40) },
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
             colors = courseTextFieldColors(),
@@ -172,7 +176,7 @@ private fun CategoryField(
         shape = RoundedCornerShape(16.dp),
         value = value,
         onValueChange = onValueChange,
-        placeholder = { Text("Categoria", color = Color(0xFF9E9890)) },
+        placeholder = { Text("Categoria", color = Gray40) },
         singleLine = true,
         colors = courseTextFieldColors(),
         modifier = modifier
@@ -189,7 +193,7 @@ private fun LevelField(
         shape = RoundedCornerShape(16.dp),
         value = value,
         onValueChange = onValueChange,
-        placeholder = { Text("Nível", color = Color(0xFF9E9890)) },
+        placeholder = { Text("Nível", color = Gray40) },
         singleLine = true,
         colors = courseTextFieldColors(),
         modifier = modifier
@@ -206,7 +210,7 @@ private fun WorktimeField(
         shape = RoundedCornerShape(16.dp),
         value = value,
         onValueChange = onValueChange,
-        placeholder = { Text("Carga horária (h)", color = Color(0xFF9E9890)) },
+        placeholder = { Text("Carga horária (h)", color = Gray40) },
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         colors = courseTextFieldColors(),
@@ -224,7 +228,7 @@ private fun AvailabilityField(
         shape = RoundedCornerShape(16.dp),
         value = value,
         onValueChange = onValueChange,
-        placeholder = { Text("Disponibilidade", color = Color(0xFF9E9890)) },
+        placeholder = { Text("Disponibilidade", color = Gray40) },
         singleLine = true,
         colors = courseTextFieldColors(),
         modifier = modifier
@@ -240,7 +244,7 @@ private fun courseTextFieldColors() = OutlinedTextFieldDefaults.colors(
     focusedTextColor = Color(0xFF1A1714),
     unfocusedTextColor = Color(0xFF1A1714),
     unfocusedPlaceholderColor = Color(0xFFB4B0AA),
-    focusedPlaceholderColor = Color(0xFF9E9890),
+    focusedPlaceholderColor = Gray40,
 )
 
 

@@ -26,7 +26,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.senai.catalogoaprender.model.DataCourse
+import br.senai.catalogoaprender.ui.theme.Blue10
+import br.senai.catalogoaprender.ui.theme.Blue30
 import br.senai.catalogoaprender.ui.theme.CatalogoAprenderTheme
+import br.senai.catalogoaprender.ui.theme.Gray30
+import br.senai.catalogoaprender.ui.theme.GrayBlue
+import br.senai.catalogoaprender.ui.theme.LightBlue
+import br.senai.catalogoaprender.ui.theme.Orange20
+import br.senai.catalogoaprender.ui.theme.White100
+import br.senai.catalogoaprender.ui.theme.White20
 
 @Composable
 fun CoursePreviewCard(
@@ -48,8 +56,8 @@ fun CoursePreviewCard(
             .padding(top = 20.dp)
             .padding(horizontal = 16.dp),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFF0D1B2A)),
-        border = BorderStroke(0.5.dp, Color(0xFF7E8897))
+        colors = CardDefaults.cardColors(containerColor = Blue10),
+        border = BorderStroke(0.5.dp, White20)
     ) {
         Column(
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 16.dp)
@@ -57,7 +65,7 @@ fun CoursePreviewCard(
             Text(
                 text = "Pré-visualização do curso",
                 style = MaterialTheme.typography.labelSmall,
-                color = Color(0xFFF1835E),
+                color = Orange20,
                 fontSize = 13.sp,
                 modifier = Modifier.padding(bottom = 12.dp)
             )
@@ -66,13 +74,13 @@ fun CoursePreviewCard(
                 text = shortname,
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFFF0EDE8)
+                color = White100
             )
 
             Text(
                 text = completename,
                 style = MaterialTheme.typography.labelSmall,
-                color = Color(0xFF304C61),
+                color = GrayBlue,
                 modifier = Modifier.padding(top = 2.dp)
             )
 
@@ -102,7 +110,7 @@ fun CoursePreviewCard(
             Text(
                 text = shortdescription,
                 style = MaterialTheme.typography.bodySmall,
-                color = Color(0xFF6A8EA0),
+                color = Gray30,
                 fontStyle = FontStyle.Italic
             )
         }
@@ -114,13 +122,13 @@ fun InfoChip(text: String, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(20.dp))
-            .background(Color(0xFF1E3352))
+            .background(Blue30)
             .padding(horizontal = 12.dp, vertical = 4.dp)
     ) {
         Text(
             text = text,
             fontSize = 11.sp,
-            color = Color(0xFF4A7FA5),
+            color = LightBlue,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
