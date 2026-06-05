@@ -1,6 +1,5 @@
-package br.senai.catalogoaprender.ui.components
+package br.senai.catalogoaprender.ui.components.CatalogComponents
 
-import android.R.attr.onClick
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -22,8 +21,7 @@ import androidx.compose.ui.unit.dp
 import br.senai.catalogoaprender.model.Availability
 import br.senai.catalogoaprender.model.Category
 import br.senai.catalogoaprender.model.DataCourse
-import br.senai.catalogoaprender.model.Level
-import br.senai.catalogoaprender.ui.screens.CatalogScreen
+import br.senai.catalogoaprender.model.LevelEnum
 
 @Composable
 fun CatalogScreen(modifier: Modifier = Modifier, course: DataCourse){
@@ -82,7 +80,7 @@ private fun CatalogScreenPreview() {
             completename = "Análise e Desenvolvimento de Sistemas",
             shortname = "ADS",
             type = Category.PROGRAMACAO,
-            level = Level.INTERMEDIARIO,
+            level = LevelEnum.INTERMEDIARIO,
             worktime = 1300,
             shortdescription = "Curso de ADS",
             longdescription = "Descrição completa",

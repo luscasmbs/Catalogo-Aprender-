@@ -4,9 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -23,12 +21,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import br.senai.catalogoaprender.R.drawable.mainlogo
 import br.senai.catalogoaprender.R.drawable.unmarkregisterlogo
-import br.senai.catalogoaprender.ui.components.BarSearch
-import br.senai.catalogoaprender.ui.components.SearchHeader
+import br.senai.catalogoaprender.ui.components.CatalogComponents.BarSearch
+import br.senai.catalogoaprender.ui.components.CatalogComponents.SearchHeader
 
 @Composable
 fun CatalogScreen(navController: NavController, modifier: Modifier = Modifier) {

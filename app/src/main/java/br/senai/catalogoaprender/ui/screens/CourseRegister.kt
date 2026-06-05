@@ -1,9 +1,6 @@
 package br.senai.catalogoaprender.ui.screens
 
-import ValidationCourseResult
-import android.R
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,16 +8,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -40,7 +33,7 @@ import androidx.navigation.compose.rememberNavController
 import br.senai.catalogoaprender.model.Availability
 import br.senai.catalogoaprender.model.Category
 import br.senai.catalogoaprender.model.DataCourse
-import br.senai.catalogoaprender.model.Level
+import br.senai.catalogoaprender.model.LevelEnum
 import br.senai.catalogoaprender.ui.components.RegisterComponents.CoursePreviewCard
 import br.senai.catalogoaprender.ui.components.RegisterComponents.CourseTextField
 import br.senai.catalogoaprender.ui.components.RegisterComponents.CursoViewHeader
@@ -56,7 +49,7 @@ private fun emptyCourse() = DataCourse(
     completename = "",
     shortname = "",
     type = Category.VAZIO,
-    level = Level.VAZIO,
+    level = LevelEnum.VAZIO,
     worktime = 0,
     shortdescription = "",
     longdescription = "",
@@ -153,7 +146,7 @@ fun CadastroCursos(navController: NavController, modifier: Modifier = Modifier) 
                 oncompletename = { course = course.copy(completename = it) },
                 onshortname = { course = course.copy(shortname = it) },
                 ontype = { course = course.copy(type = Category.valueOf(it)) },
-                onLevel = { course = course.copy(level = Level.valueOf(it)) },
+                onLevel = { course = course.copy(level = LevelEnum.valueOf(it)) },
                 onworktime = { course = course.copy(worktime = it) },
                 onshortdescription = { course = course.copy(shortdescription = it) },
                 onlongdescription = { course = course.copy(longdescription = it) },

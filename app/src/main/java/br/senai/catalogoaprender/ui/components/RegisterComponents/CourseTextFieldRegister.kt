@@ -23,10 +23,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.senai.catalogoaprender.model.Availability
-import br.senai.catalogoaprender.model.Category
 import br.senai.catalogoaprender.model.DataCourse
-import br.senai.catalogoaprender.model.Level
 import br.senai.catalogoaprender.ui.theme.CatalogoAprenderTheme
 
 @Composable
