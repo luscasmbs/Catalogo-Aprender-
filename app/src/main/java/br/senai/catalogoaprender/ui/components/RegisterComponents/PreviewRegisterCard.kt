@@ -10,12 +10,15 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -26,13 +29,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.senai.catalogoaprender.model.DataCourse
+import br.senai.catalogoaprender.ui.theme.Black30
 import br.senai.catalogoaprender.ui.theme.Blue10
 import br.senai.catalogoaprender.ui.theme.Blue30
+import br.senai.catalogoaprender.ui.theme.Blue90
 import br.senai.catalogoaprender.ui.theme.CatalogoAprenderTheme
+import br.senai.catalogoaprender.ui.theme.Gray20
 import br.senai.catalogoaprender.ui.theme.Gray30
+import br.senai.catalogoaprender.ui.theme.Gray40
+import br.senai.catalogoaprender.ui.theme.Gray60
 import br.senai.catalogoaprender.ui.theme.GrayBlue
 import br.senai.catalogoaprender.ui.theme.LightBlue
 import br.senai.catalogoaprender.ui.theme.Orange20
+import br.senai.catalogoaprender.ui.theme.White
 import br.senai.catalogoaprender.ui.theme.White100
 import br.senai.catalogoaprender.ui.theme.White20
 
@@ -56,31 +65,58 @@ fun CoursePreviewCard(
             .padding(top = 20.dp)
             .padding(horizontal = 16.dp),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Blue10),
-        border = BorderStroke(0.5.dp, White20)
+        colors = CardDefaults.cardColors(containerColor = White),
+        border = BorderStroke(0.5.dp, Gray20)
     ) {
+        Text(
+            text = "Pré-visualização do curso",
+            style = MaterialTheme.typography.labelSmall,
+            color = Orange20,
+            fontSize = 13.sp,
+            modifier = Modifier.padding(top = 8.dp, start = 12.dp)
+        )
         Column(
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 16.dp)
         ) {
-            Text(
-                text = "Pré-visualização do curso",
-                style = MaterialTheme.typography.labelSmall,
-                color = Orange20,
-                fontSize = 13.sp,
-                modifier = Modifier.padding(bottom = 12.dp)
-            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Box(
+                    modifier = modifier
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(Blue90)
+                        .padding(horizontal = 12.dp, vertical = 4.dp)
+                ) {
+                    Text(
+                        text = course.type.toString(),
+                        fontSize = 11.sp,
+                        color = LightBlue,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+                Text(
+                    text = ("${course.worktime.toString()}h"),
+                    fontSize = 11.sp,
+                    color = Gray40,
+                    maxLines = 1,
+                )
 
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = shortname,
+                text = course.shortname,
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
-                color = White100
+                color = Black30
             )
 
             Text(
-                text = completename,
+                text = course.completename,
                 style = MaterialTheme.typography.labelSmall,
-                color = GrayBlue,
+                color = Gray40,
                 modifier = Modifier.padding(top = 2.dp)
             )
 
@@ -90,44 +126,56 @@ fun CoursePreviewCard(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                InfoChip(text = type, modifier = Modifier.weight(1f))
-                InfoChip(text = level, modifier = Modifier.weight(1f))
+                InfoChip(
+                    text = course.type.toString()
+                )
+
+                InfoChip(
+                    text = course.level.toString()
+                )
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                LinearProgressIndicator(
+                    progress = { course.percentageprogress.toFloat() },
+                    modifier = Modifier
+                        .width(80.dp)
+                        .padding(top = 8.dp),
+                    color = LightBlue,
+                    trackColor = Gray60
+
+                )
+
+                Text(
+                    text = "${(course.percentageprogress*100).toInt()}%",
+                    color = Gray40,
+                    fontSize = 12.sp,
+
+                    )
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                InfoChip(text = worktime, modifier = Modifier.weight(1f))
-                InfoChip(text = availability, modifier = Modifier.weight(1f))
-                InfoChip(text = progress, modifier = Modifier.weight(1f))
-            }
 
-            Spacer(modifier = Modifier.height(10.dp))
-
-            Text(
-                text = shortdescription,
-                style = MaterialTheme.typography.bodySmall,
-                color = Gray30,
-                fontStyle = FontStyle.Italic
-            )
         }
     }
 }
 
 @Composable
-fun InfoChip(text: String, modifier: Modifier = Modifier) {
+fun InfoChip(
+    text: String,
+    modifier: Modifier = Modifier
+) {
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(20.dp))
+            .clip(RoundedCornerShape(12.dp))
             .background(Blue30)
-            .padding(horizontal = 12.dp, vertical = 4.dp)
+            .height(18.dp)
+            .padding(horizontal = 8.dp),
+        contentAlignment = Alignment.Center
     ) {
         Text(
             text = text,
-            fontSize = 11.sp,
+            fontSize = 9.sp,
             color = LightBlue,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis

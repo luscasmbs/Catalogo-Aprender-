@@ -17,6 +17,10 @@ val White20 = Color(0xFF7E8897)
 
 val LightBlue = Color(0xFF4a7fa5)
 
+val Black30 = Color(0xFF1a1714)
+
+
+val Blue90 = Color(0xFFe6f1fb)
 val Gray60 = Color(0xFFE8E4DF)
 
 val Gray30 = Color(0xFF6A8EA0)

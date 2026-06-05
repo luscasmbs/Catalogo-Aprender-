@@ -16,6 +16,9 @@ data class ValidationCourseResult(
             if (course.completename.length < 10) {
                 errors.add("O nome completo deve ter no mínimo 10 caracteres.")
             }
+            if(course.percentageprogress <0.0 || course.percentageprogress > 100.0){
+                errors.add("A porcentagem de progresso deve ser de 0 a 100.")
+            }
 
             if (course.shortname.isBlank()) {
                 errors.add("O nome breve é obrigatório.")

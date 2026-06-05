@@ -154,9 +154,13 @@ fun CourseTextField(
 
         OutlinedTextField(
             shape = RoundedCornerShape(16.dp),
-            value = course.percentageprogress.toString(),
-            onValueChange = { it.toDoubleOrNull()?.let(onpercentageprogress) },
-            placeholder = { Text("Progresso (0.0 a 1.0)", color = Gray40) },
+            value = ((course.percentageprogress * 100).toInt()).toString(),
+            onValueChange = {
+                it.toDoubleOrNull()?.let { value ->
+                    onpercentageprogress(value / 100)
+                }
+            },
+            placeholder = { Text("Progresso (0 a 100)", color = Gray40) },
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
             colors = courseTextFieldColors(),
