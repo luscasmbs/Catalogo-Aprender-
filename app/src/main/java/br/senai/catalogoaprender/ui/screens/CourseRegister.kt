@@ -1,5 +1,7 @@
 package br.senai.catalogoaprender.ui.screens
 
+import ValidationCourseResult
+import android.R.id.message
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -41,7 +43,7 @@ import br.senai.catalogoaprender.ui.components.RegisterComponents.FormActions
 import br.senai.catalogoaprender.ui.components.RegisterComponents.StatusCard
 import br.senai.catalogoaprender.R.drawable.registerico
 import br.senai.catalogoaprender.R.drawable.unmarkmainlogo
-
+import br.senai.catalogoaprender.data.CourseRepository
 
 
 private fun emptyCourse() = DataCourse(
@@ -63,7 +65,6 @@ fun CadastroCursos(navController: NavController, modifier: Modifier = Modifier) 
     var statusMessage by remember {
         mutableStateOf("Preencha os dados para gerar a visualização do curso.")
     }
-    var listCourse = remember { mutableStateListOf<DataCourse>() }
 
 
     Scaffold(
@@ -159,12 +160,34 @@ fun CadastroCursos(navController: NavController, modifier: Modifier = Modifier) 
             StatusCard(mensage = statusMessage)
             FormActions(
                 onClickClear = {
-                    course = emptyCourse()
-                    statusMessage = "Formulário limpo."
+                    course = DataCourse(
+                        id = 0,
+                        completename = "",
+                        shortname = "",
+                        type = Category.VAZIO,
+                        level = LevelEnum.VAZIO,
+                        worktime = 0,
+                        shortdescription = "",
+                        longdescription = "",
+                        availability = Availability.VAZIO,
+                        percentageprogress = 0.0
+                    )
                 },
                 onValidatorClick = {
-                    listCourse.add(course)
-                    statusMessage = "Curso cadastrado com sucesso"
+                    val result = ValidationCourseResult(course)
+
+                    statusMessage = result.message
+
+
+                    if (result.valid) {
+                        val newCourse = course.copy(
+                            id = CourseRepository.courses.size + 1
+                        )
+
+                        CourseRepository.addCourse(newCourse)
+
+                        navController.navigate("Catalog")
+                    }
                 },
                 onLoadExampleClick = {
                     course = DataCourse.examplemodel()

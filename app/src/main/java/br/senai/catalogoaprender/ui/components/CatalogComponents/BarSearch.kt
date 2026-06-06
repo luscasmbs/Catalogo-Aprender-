@@ -28,7 +28,7 @@ package br.senai.catalogoaprender.ui.components.CatalogComponents
 @Composable
     fun BarSearch(
         modifier: Modifier = Modifier,
-        onSearchTex: (String) -> Unit = {}
+        onSearchText: (String) -> Unit = {}
     ){
         var busca by remember { mutableStateOf("") }
 
@@ -41,7 +41,7 @@ package br.senai.catalogoaprender.ui.components.CatalogComponents
                 value = busca,
                 onValueChange = { searchTex ->
                     busca = searchTex
-                    onSearchTex(searchTex)
+                    onSearchText(searchTex)
                 }  ,
                 shape = RoundedCornerShape(10.dp),
                 modifier = modifier
