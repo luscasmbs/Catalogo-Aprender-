@@ -37,40 +37,35 @@ import androidx.navigation.compose.rememberNavController
 import br.senai.catalogoaprender.R.drawable.mainlogo
 import br.senai.catalogoaprender.R.drawable.unmarkregisterlogo
 import br.senai.catalogoaprender.data.CourseRepository
+import br.senai.catalogoaprender.domain.filterCourses
 import br.senai.catalogoaprender.model.Category
 import br.senai.catalogoaprender.ui.components.CatalogComponents.BarSearch
 import br.senai.catalogoaprender.ui.components.CatalogComponents.CourseCard
 import br.senai.catalogoaprender.ui.components.CatalogComponents.SearchHeader
 import br.senai.catalogoaprender.ui.theme.Blue30
+import br.senai.catalogoaprender.ui.theme.White10
 
 @Composable
-fun CatalogScreen(navController: NavController, modifier: Modifier = Modifier) {
+fun CatalogScreen(
+    navController: NavController,
+    modifier: Modifier = Modifier
+) {
     var searchText by rememberSaveable { mutableStateOf("") }
     var selectedCategory by rememberSaveable { mutableStateOf<Category?>(null) }
+    var selectedCourseId by rememberSaveable { mutableStateOf<Int?>(null) }
 
     val courses = CourseRepository.courses
 
     val categoriesWithCourses = courses
-        .map { it.type }
-        .filter { it != Category.VAZIO }
+        .map { course -> course.type }
+        .filter { category -> category != Category.VAZIO }
         .distinct()
 
-    val courseFilter = courses.filter { course ->
-        val matchesSearch =
-            searchText.isBlank() ||
-                    course.completename.contains(searchText, ignoreCase = true) ||
-                    course.shortname.contains(searchText, ignoreCase = true) ||
-                    course.shortdescription.contains(searchText, ignoreCase = true) ||
-                    course.longdescription.contains(searchText, ignoreCase = true) ||
-                    course.type.displayname.contains(searchText, ignoreCase = true) ||
-                    course.level.name.contains(searchText, ignoreCase = true) ||
-                    course.availability.displayname.contains(searchText, ignoreCase = true)
-
-        val matchesCategory =
-            selectedCategory == null || course.type == selectedCategory
-
-        matchesSearch && matchesCategory
-    }
+    val courseFilter = filterCourses(
+        courses = courses,
+        searchText = searchText,
+        selectedCategory = selectedCategory
+    )
 
     Scaffold(
         bottomBar = {
@@ -140,12 +135,13 @@ fun CatalogScreen(navController: NavController, modifier: Modifier = Modifier) {
             modifier = modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .background(Color(0xFFF5F2EE))
+                .background(White10)
         ) {
             SearchHeader()
 
             BarSearch(
-                onSearchText = { text ->
+                value = searchText,
+                onValueChange = { text ->
                     searchText = text
                 }
             )
@@ -159,8 +155,12 @@ fun CatalogScreen(navController: NavController, modifier: Modifier = Modifier) {
             ) {
                 FilterChip(
                     selected = selectedCategory == null,
-                    onClick = { selectedCategory = null },
-                    label = { Text("Todas") },
+                    onClick = {
+                        selectedCategory = null
+                    },
+                    label = {
+                        Text(text = "Todos")
+                    },
                     colors = FilterChipDefaults.filterChipColors(
                         selectedContainerColor = Blue30,
                         selectedLabelColor = Color.White,
@@ -172,8 +172,12 @@ fun CatalogScreen(navController: NavController, modifier: Modifier = Modifier) {
                 categoriesWithCourses.forEach { category ->
                     FilterChip(
                         selected = selectedCategory == category,
-                        onClick = { selectedCategory = category },
-                        label = { Text(category.displayname) },
+                        onClick = {
+                            selectedCategory = category
+                        },
+                        label = {
+                            Text(text = category.displayname)
+                        },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = Blue30,
                             selectedLabelColor = Color.White,
@@ -184,30 +188,37 @@ fun CatalogScreen(navController: NavController, modifier: Modifier = Modifier) {
                 }
             }
 
-
             if (courseFilter.isEmpty()) {
                 Text(
                     text = "Nenhum curso encontrado",
                     color = Blue30,
-                    modifier = Modifier.padding(24.dp)
+                    modifier = Modifier.padding(horizontal = 24.dp, vertical = 12.dp)
                 )
+
                 Text(
                     text = "Ajuste a busca ou altere o filtro selecionado.",
                     color = Blue30,
-                    modifier = Modifier.padding(24.dp, top = 0.dp)
+                    modifier = Modifier.padding(horizontal = 24.dp)
                 )
             } else {
                 Text(
                     text = "Cursos exibidos: ${courseFilter.size}",
-                    color = Color(0xFF1E3352),
+                    color = Blue30,
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
                 )
+
                 LazyColumn {
-                    items(courseFilter) { course ->
+                    items(
+                        items = courseFilter,
+                        key = { course -> course.id }
+                    ) { course ->
                         CourseCard(
                             course = course,
-                            select = false,
-                            onclick = {}
+                            select = selectedCourseId == course.id,
+                            onclick = {
+                                selectedCourseId = course.id
+                                navController.navigate("Details/${course.id}")
+                            }
                         )
                     }
                 }

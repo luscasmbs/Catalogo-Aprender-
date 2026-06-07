@@ -35,6 +35,8 @@ val Blue30 = Color(0xFF1e3352)
 
 val Orange20 = Color(0xFFF1835E)
 
+val White10 = Color(0xFFF5F2EE)
+
 val Orange30 = Color(0xFFF4845F)
 
 val Orange10 = Color(0xFFe27d5d)
