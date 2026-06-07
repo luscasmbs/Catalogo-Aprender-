@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import br.senai.catalogoaprender.model.DataCourse
+import br.senai.catalogoaprender.model.LevelEnum
 import br.senai.catalogoaprender.ui.theme.Blue10
 import br.senai.catalogoaprender.ui.theme.Blue30
 import br.senai.catalogoaprender.ui.theme.Gray20
@@ -67,7 +68,7 @@ fun DetailsCourseCard(
             Spacer(modifier = Modifier.height(16.dp))
 
             DetailInfoRow("Categoria", course.type.displayname)
-            DetailInfoRow("Nível", course.level.name)
+            DetailInfoRow("Nível", course.level.displayName())
             DetailInfoRow("Carga horária", "${course.worktime}h")
             DetailInfoRow("Status", course.availability.displayname)
 
@@ -92,5 +93,14 @@ fun DetailsCourseCard(
                 color = Gray20
             )
         }
+    }
+}
+
+private fun LevelEnum.displayName(): String {
+    return when (this) {
+        LevelEnum.BASICO -> "Básico"
+        LevelEnum.INTERMEDIARIO -> "Intermediário"
+        LevelEnum.AVANCACO -> "Avançado"
+        LevelEnum.VAZIO -> "Vazio"
     }
 }

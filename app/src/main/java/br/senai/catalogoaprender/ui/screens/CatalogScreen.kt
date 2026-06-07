@@ -39,6 +39,7 @@ import br.senai.catalogoaprender.R.drawable.unmarkregisterlogo
 import br.senai.catalogoaprender.data.CourseRepository
 import br.senai.catalogoaprender.domain.filterCourses
 import br.senai.catalogoaprender.model.Category
+import br.senai.catalogoaprender.navigation.AppRoutes
 import br.senai.catalogoaprender.ui.components.CatalogComponents.BarSearch
 import br.senai.catalogoaprender.ui.components.CatalogComponents.CourseCard
 import br.senai.catalogoaprender.ui.components.CatalogComponents.SearchHeader
@@ -106,7 +107,7 @@ fun CatalogScreen(
                     ) {
                         Button(
                             onClick = {
-                                navController.navigate("CourseRegister")
+                                navController.navigate(AppRoutes.COURSE_REGISTER)
                             },
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color.White
@@ -159,7 +160,7 @@ fun CatalogScreen(
                         selectedCategory = null
                     },
                     label = {
-                        Text(text = "Todos")
+                        Text(text = "Todas")
                     },
                     colors = FilterChipDefaults.filterChipColors(
                         selectedContainerColor = Blue30,
@@ -217,7 +218,7 @@ fun CatalogScreen(
                             select = selectedCourseId == course.id,
                             onclick = {
                                 selectedCourseId = course.id
-                                navController.navigate("Details/${course.id}")
+                                navController.navigate(AppRoutes.detailsRoute(course.id))
                             }
                         )
                     }
